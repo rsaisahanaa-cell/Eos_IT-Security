@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GridShield | IT Security</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            ⚡
+        </div>
+
+        <div>
+            <h2>GridShield</h2>
+            <p>Critical Infrastructure Security</p>
+        </div>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <div class="live-status">
+            <span></span>
+            SYSTEM ONLINE
+        </div>
+
+        <button class="mode-btn" onclick="toggleTheme()">
+            ◐
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            THEME 2 • IT SECURITY
+        </div>
+
+        <h1>
+            Detect the Pattern.
+            <br>
+            <span>Protect the Grid.</span>
+        </h1>
+
+        <p>
+            GridShield detects abnormal behaviour across
+            customer-based assets and identifies coordinated
+            activity before it can threaten critical
+            infrastructure.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn" onclick="runScan()">
+                ▶ Run Security Scan
+            </button>
+
+            <button class="secondary-btn" onclick="scrollToSection('architecture')">
+                Explore Architecture ↓
+            </button>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>248</strong>
+                <span>Assets Monitored</span>
+            </div>
+
+            <div>
+                <strong>99.7%</strong>
+                <span>System Availability</span>
+            </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Threat Monitoring</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SHIELD -->
+
+    <div class="hero-shield">
+
+        <div class="shield-ring">
+
+            <div class="shield-inner">
+                🛡️
+            </div>
+
+        </div>
+
+        <p>GRID PROTECTED</p>
+
+        <span>DEFENSIVE MONITORING ACTIVE</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+            <span>LIVE MONITORING</span>
+            <h2>Security Overview</h2>
+        </div>
+
+        <div class="updated">
+            ● Live telemetry
+        </div>
+
+    </div>
+
+
+    <div class="metrics">
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon blue">
+                ◉
+            </div>
+
+            <div>
+
+                <p>CONNECTED ASSETS</p>
+
+                <h3 id="assetsCount">
+                    248
+                </h3>
+
+                <small>
+                    ↑ 4.2% this month
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon green">
+                ✓
+            </div>
+
+            <div>
+
+                <p>HEALTHY ASSETS</p>
+
+                <h3 id="healthyCount">
+                    231
+                </h3>
+
+                <small>
+                    93.1% of network
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon yellow">
+                !
+            </div>
+
+            <div>
+
+                <p>SUSPICIOUS</p>
+
+                <h3 id="suspiciousCount">
+                    12
+                </h3>
+
+                <small>
+                    Requires investigation
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon red">
+                !
+            </div>
+
+            <div>
+
+                <p>CRITICAL ALERTS</p>
+
+                <h3 id="criticalCount">
+                    5
+                </h3>
+
+                <small>
+                    Immediate attention
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= MONITOR + RISK ================= -->
+
+    <div class="two-column">
+
+
+        <div class="card large-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span>ASSET TELEMETRY</span>
+                    <h3>Customer Asset Behaviour</h3>
+                </div>
+
+                <button onclick="refreshAssets()" class="refresh-btn">
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Asset</th>
+                            <th>Type</th>
+                            <th>Behaviour</th>
+                            <th>Anomaly</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="assetTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RISK -->
+
+        <div class="card risk-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span>THREAT ANALYSIS</span>
+                    <h3>Grid Risk Score</h3>
+                </div>
+
+            </div>
+
+
+            <div class="risk-meter">
+
+                <div class="risk-number">
+
+                    <strong id="riskScore">
+                        72
+                    </strong>
+
+                    <span>/100</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-status" id="riskStatus">
+                ELEVATED RISK
+            </div>
+
+
+            <p id="riskDescription">
+
+                Multiple customer assets are displaying
+                abnormal behavioural patterns.
+
+            </p>
+
+
+            <div class="risk-bar">
+
+                <div id="riskBar"></div>
+
+            </div>
+
+
+            <div class="risk-labels">
+
+                <span>LOW</span>
+                <span>MODERATE</span>
+                <span>HIGH</span>
+                <span>CRITICAL</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CORRELATION ================= -->
+
+<section class="section" id="architecture">
+
+    <div class="section-title">
+
+        <div>
+
+            <span>CORE DETECTION ENGINE</span>
+
+            <h2>
+                Coordinated Activity Detection
+            </h2>
+
+        </div>
+
+        <div class="engine-status">
+            ● ENGINE ACTIVE
+        </div>
+
+    </div>
+
+
+    <div class="correlation-card">
+
+
+        <div class="flow-step">
+
+            <div class="flow-number">
+                01
+            </div>
+
+            <div class="flow-icon">
+                📡
+            </div>
+
+            <h3>
+                Customer Assets
+            </h3>
+
+            <p>
+                Smart meters, EV chargers,
+                solar inverters and IoT devices.
+            </p>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-step">
+
+            <div class="flow-number">
+                02
+            </div>
+
+            <div class="flow-icon">
+                📊
+            </div>
+
+            <h3>
+                Behaviour Analysis
+            </h3>
+
+            <p>
+                Establish normal behaviour
+                and detect deviations.
+            </p>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-step danger-step">
+
+            <div class="flow-number">
+                03
+            </div>
+
+            <div class="flow-icon">
+                🔍
+            </div>
+
+            <h3>
+                Correlation Engine
+            </h3>
+
+            <p>
+                Connect similar anomalies
+                across multiple assets.
+            </p>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-step">
+
+            <div class="flow-number">
+                04
+            </div>
+
+            <div class="flow-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Defensive Response
+            </h3>
+
+            <p>
+                Alert, investigate and
+                contain suspicious activity.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CORRELATION RESULT -->
+
+    <div class="correlation-result">
+
+        <div class="result-icon">
+            !
+        </div>
+
+        <div class="result-content">
+
+            <span>HIGH-CONFIDENCE CORRELATION</span>
+
+            <h3>
+                Coordinated behaviour detected
+            </h3>
+
+            <p>
+
+                12 customer assets displayed
+                similar abnormal behaviour within
+                the monitored time window.
+
+            </p>
+
+        </div>
+
+
+        <div class="confidence">
+
+            <strong>
+                91%
+            </strong>
+
+            <span>
+                confidence
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ALERTS + RESPONSE ================= -->
+
+<section class="section">
+
+    <div class="two-column">
+
+
+        <!-- ALERTS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span>SECURITY OPERATIONS</span>
+
+                    <h3>
+                        Recent Alerts
+                    </h3>
+
+                </div>
+
+                <span class="alert-count">
+                    5 ACTIVE
+                </span>
+
+            </div>
+
+
+            <div id="alertsList">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RESPONSE -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span>INCIDENT RESPONSE</span>
+
+                    <h3>
+                        Recommended Actions
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="response-list">
+
+
+                <div class="response">
+
+                    <div class="response-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Isolate suspicious assets
+                        </h4>
+
+                        <p>
+                            Restrict abnormal devices from
+                            sensitive services.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="response">
+
+                    <div class="response-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Increase monitoring
+                        </h4>
+
+                        <p>
+                            Apply enhanced telemetry to
+                            affected assets.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="response">
+
+                    <div class="response-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Verify device integrity
+                        </h4>
+
+                        <p>
+                            Check identity, configuration
+                            and firmware status.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="response">
+
+                    <div class="response-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Escalate to security team
+                        </h4>
+
+                        <p>
+                            Send the incident to the
+                            Security Operations Centre.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PROTECTION ================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span>DEFENCE IN DEPTH</span>
+
+            <h2>
+                Protection Framework
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="protection-grid">
+
+
+        <div class="protection-card">
+
+            <div>
+                01
+            </div>
+
+            <h3>
+                Zero Trust
+            </h3>
+
+            <p>
+                Customer assets are continuously
+                verified rather than automatically trusted.
+            </p>
+
+        </div>
+
+
+        <div class="protection-card">
+
+            <div>
+                02
+            </div>
+
+            <h3>
+                Behaviour Analytics
+            </h3>
+
+            <p>
+                Establish device baselines and identify
+                meaningful deviations.
+            </p>
+
+        </div>
+
+
+        <div class="protection-card">
+
+            <div>
+                03
+            </div>
+
+            <h3>
+                Cross-Asset Correlation
+            </h3>
+
+            <p>
+                Combine events across devices to detect
+                coordinated activity.
+            </p>
+
+        </div>
+
+
+        <div class="protection-card">
+
+            <div>
+                04
+            </div>
+
+            <h3>
+                Rapid Containment
+            </h3>
+
+            <p>
+                Prioritize high-risk incidents and
+                recommend defensive action.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= IMPACT ================= -->
+
+<section class="impact-section">
+
+    <div class="impact-content">
+
+        <span>
+            WHY GRIDSHIELD?
+        </span>
+
+        <h2>
+            Don't just detect
+            <br>
+            <strong>individual anomalies.</strong>
+        </h2>
+
+        <p>
+            Understand the bigger picture.
+            GridShield connects seemingly small
+            security events across customer assets
+            to reveal coordinated threats.
+        </p>
+
+    </div>
+
+
+    <div class="impact-quote">
+
+        <div>
+            "
+        </div>
+
+        <p>
+            One suspicious device may be an incident.
+            Twelve devices behaving together may be
+            a pattern.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            GridShield
+        </strong>
+
+        <span>
+            Defensive Cybersecurity Prototype
+        </span>
+
+    </div>
+
+
+    <p>
+        Theme 2: IT Security • Cluster-based protection
+    </p>
+
+</footer>
+
+
+
+<!-- TOAST -->
+
+<div id="toast">
+
+    <span>✓</span>
+
+    <div>
+
+        <strong>
+            Security Scan Complete
+        </strong>
+
+        <p>
+            Behaviour analysis updated.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
